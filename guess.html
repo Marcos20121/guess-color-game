@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess With Me</title>
+</head>
+<body>
+    <h1> <p style="text-align: center;">Guess The Color With Me &#10067;</p> </h1>
+    
+    <div style="text-align: center;">
+        <button type="button" onclick="runGame()">Start Game</button>
+    </div>
+  
+   <script>
+     const COLORS_ARRAY= ['blue','gold','pink','orange'];
+
+     function runGame() {
+        
+         let guess= '';
+         let correct=false;
+         
+         const targetIndex= Math.floor(Math.random()* COLORS_ARRAY.length);
+         const target= COLORS_ARRAY[targetIndex]
+         console.log('The target is:' + target);
+     
+     do {
+         guess=prompt('I am thinking of one of these colors:\n\n' + COLORS_ARRAY.join(',') +
+'What color am I thinking of?\n');
+         if (guess===null) {
+        alert('Game is cancelled');
+         }
+         correct= checkGuess(guess.toLowerCase(), target);
+     } while (!correct);
+          alert("Congradulations you won!");
+    }
+     function checkGuess(guess,target){
+         let correct=false;
+         if (!COLORS_ARRAY.includes(guess)) {
+             alert('Please Try Again');
+
+         } else if (guess > target) {
+        alert('The color was too higher than mines.');
+             
+        } else if (guess < target) {
+          alert('Your color was too lower than mines.');   
+
+         } else{ 
+             correct=true;
+         }
+        
+        return correct;
+        
+     }
+
+</script>        
+</body>
+</html>
